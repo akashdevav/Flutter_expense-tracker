@@ -1,7 +1,5 @@
+import 'package:expense_app/Model/expense.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-final formatter = DateFormat.yMd();
 
 class NewExpenses extends StatefulWidget {
   const NewExpenses({super.key});
@@ -24,9 +22,9 @@ class _NewExpensesState extends State<NewExpenses> {
         initialDate: now,
         firstDate: firstDate,
         lastDate: now);
-        setState(() {
-          _selectDate = pickedDate;
-        });
+    setState(() {
+      _selectDate = pickedDate;
+    });
   }
 
   @override
@@ -68,7 +66,9 @@ class _NewExpensesState extends State<NewExpenses> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Flexible(
-                      child: Text(_selectDate == null ? 'No Date Selected' : formatter.format(_selectDate!)),
+                      child: Text(_selectDate == null
+                          ? 'No Date Selected'
+                          : formatter.format(_selectDate!)),
                     ),
                     IconButton(
                       onPressed: _onPressDate,
@@ -82,6 +82,19 @@ class _NewExpensesState extends State<NewExpenses> {
           const SizedBox(height: 20),
           Row(
             children: [
+              DropdownButton(
+                  items: Category.values
+                      .map(
+                        (category) => DropdownMenuItem(
+                          value: category,
+                          child: Text(category.name),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    print(value);
+                  }),
+              const Spacer(),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
