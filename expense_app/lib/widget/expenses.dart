@@ -11,25 +11,20 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _registeredExpense = [
-    Expense(
-        title: 'flutter',
-        amount: 13.12,
-        date: DateTime.now(),
-        category: Category.work),
-    Expense(
-        title: 'cenima',
-        amount: 10.12,
-        date: DateTime.now(),
-        category: Category.leisure)
-  ];
+  final List<Expense> _registeredExpense = [];
 
   //Method for the add icon to show the new_bottom_add_overlay.
   void _openAddOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => const NewExpenses(),
+      builder: (ctx) => NewExpenses(addExpenses: _addExpense),
     );
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpense.add(expense);
+    });
   }
 
   @override
