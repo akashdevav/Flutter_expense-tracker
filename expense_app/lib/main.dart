@@ -32,8 +32,8 @@ void main() {
         useMaterial3: true,
         colorScheme: kColourScheme,
         appBarTheme: const AppBarTheme().copyWith(
-          backgroundColor: kColourScheme.primaryContainer,
-          foregroundColor: kColourScheme.onPrimaryContainer,
+          backgroundColor: kColourScheme.onPrimaryContainer,
+          foregroundColor: kColourScheme.secondaryContainer,
         ),
         cardTheme: const CardTheme().copyWith(
           color: kColourScheme.secondaryContainer,
