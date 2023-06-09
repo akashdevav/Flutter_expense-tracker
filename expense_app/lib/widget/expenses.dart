@@ -11,7 +11,18 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _registeredExpense = [];
+  final List<Expense> _registeredExpense = [
+    Expense(
+        title: 'Kerala Trip',
+        amount: 230.50,
+        date: DateTime.now(),
+        category: Category.travel),
+    Expense(
+        title: 'Food Paradise',
+        amount: 30.50,
+        date: DateTime.now(),
+        category: Category.food),
+  ];
 
   //Method for the add icon to show the new_bottom_add_overlay.
   void _openAddOverlay() {
@@ -42,7 +53,7 @@ class _ExpensesState extends State<Expenses> {
           label: 'Undo',
           onPressed: () {
             setState(() {
-            _registeredExpense.insert(listIndex, expense); 
+              _registeredExpense.insert(listIndex, expense);
             });
           },
         ),
@@ -61,6 +72,7 @@ class _ExpensesState extends State<Expenses> {
     }
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 60,
         actions: [
           IconButton(
             onPressed: _openAddOverlay,
