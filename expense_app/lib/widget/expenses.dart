@@ -27,6 +27,7 @@ class _ExpensesState extends State<Expenses> {
   //Method for the add icon to show the new_bottom_add_overlay.
   void _openAddOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
       builder: (ctx) => NewExpenses(addExpenses: _addExpense),
@@ -85,7 +86,8 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          const Text('Expenses chart'),
+          const Text('Chart'),
+          //const ChartBar(fill: 0.0),
           Expanded(
             child: mainContent,
           ),
